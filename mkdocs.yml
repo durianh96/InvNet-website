@@ -78,3 +78,18 @@ plugins:
 
 copyright: |
   Copyright &copy; 2023 <a href="https://github.com/durianh96"  target="_blank" rel="noopener">Diyuan Huang</a>
+
+
+nav:
+  - Home: index.md
+  - Inventory Graph:
+    - inv_graph/inv_graph.md
+  - GSM:
+    - gsm/gsm.md
+  - Simulation:
+    - sim/sim.md
+  - Literature:
+    - literature/literature.md
+  - Blog:
+    - blog/index.md
+
