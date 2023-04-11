@@ -1,7 +1,5 @@
 # Inventory Graph
 
-
-
 https://github.com/durianh96/InvNet-inv-graph
 
 
