@@ -1,0 +1,1041 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Diyuan Huang">
+      
+      
+      
+        <link rel="prev" href="../../inv_graph/inv_graph/">
+      
+      
+        <link rel="next" href="../../sim/sim/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
+    
+    
+      
+        <title>Inventory Network Optimization (InvNet) GSM-Lab - InvNet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ded33207.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#inventory-network-optimization-invnet-gsm-lab" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="InvNet" class="md-header__button md-logo" aria-label="InvNet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            InvNet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Inventory Network Optimization (InvNet) GSM-Lab
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../inv_graph/inv_graph/" class="md-tabs__link">
+        Inventory Graph
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        GSM
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sim/sim/" class="md-tabs__link">
+        Simulation
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../literature/literature/" class="md-tabs__link">
+        Literature
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blog/" class="md-tabs__link">
+        Blog
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="InvNet" class="md-nav__button md-logo" aria-label="InvNet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    InvNet
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Inventory Graph
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Inventory Graph
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inv_graph/inv_graph/" class="md-nav__link">
+        Inventory Graph
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          GSM
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          GSM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Inventory Network Optimization (InvNet) GSM-Lab
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Inventory Network Optimization (InvNet) GSM-Lab
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#approaches-considered-in-this-library" class="md-nav__link">
+    Approaches considered in this library
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-loading-and-generating" class="md-nav__link">
+    Data loading and  generating
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inventory-policy-optimizing" class="md-nav__link">
+    Inventory policy optimizing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Simulation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Simulation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sim/sim/" class="md-nav__link">
+        Simulation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Literature
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Literature
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../literature/literature/" class="md-nav__link">
+        Literature
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../blog/">Blog</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#approaches-considered-in-this-library" class="md-nav__link">
+    Approaches considered in this library
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-loading-and-generating" class="md-nav__link">
+    Data loading and  generating
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inventory-policy-optimizing" class="md-nav__link">
+    Inventory policy optimizing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="inventory-network-optimization-invnet-gsm-lab">Inventory Network Optimization (InvNet) GSM-Lab</h1>
+<p>https://github.com/durianh96/InvNet-GSM</p>
+<p>This library is part of an open source project called InvNet(to add link), and it is based on our paper:</p>
+<ul>
+<li>Huang D, Yu J, Yang C, Optimizing large-scale inventory networks: An iterative decomposition approach (Revision at EJOR).</li>
+</ul>
+<p>This library provides the Python codes for data loading, data generation and all methods considered in this paper.</p>
+<p>If you encounter any significant bugs, then please contact <a href="huang.diyuan96@gmail.com">Diyuan Huang</a>.</p>
+<p>Optimizing safety stock placement on a large-scale inventory network is challenging since it may involve a massive number of nodes and many shared materials. </p>
+<p>From a structural perspective, a supply chain can be viewed as a collection of connected facilities, ranging from suppliers' warehouses, factories, and distribution centers to the end sales channels.
+The flow of materials through these facilities can be modeled as an inventory network. 
+The following figure shows some inventory networks with different structures. The blue cycles represent facilities.</p>
+<p><img alt="Different network structures for inventory networks" src="../pics/net_ex1.png" /></p>
+<p>The material at each facility is a potential inventory stocking node. We abbreviate it as "node", indicated as black dots in figures. 
+The transportation and assembly relationships are modeled as directed edges (grey arrows). 
+From a topological point of view, the inventory network is a directed acyclic graph (DAG) composed of these nodes and edges.</p>
+<p>In practice, the inventory network is complex and usually not a simple tree structure, especially when the production process is incorporated into the network. This process often has many components, which are shared to produce different assemblies. </p>
+<p>Coping with uncertainty is one of the most significant issues for real-world supply chain management. The optimization of where to place decoupling inventories that protect one part of the supply chain from another can effectively enhance the resilience of the supply network to deal with uncertainties, and improve the operational efficiency of the network. 
+However, inventory management for networks under uncertainty is challenging even for the tree structure. </p>
+<p>Deriving optimal structural policies for pure distribution and assembly network is intractable due to the complex non-linearity of the cost functions and the well-known curse of dimensionality in dynamic programming (de Kok et al. 2018). </p>
+<p>Unfortunately, real-world problems usually have a general network structure and often contain a large number of nodes.
+"General" means a node can have multiple upstream nodes and multiple downstream nodes.
+In the management of such networks, it is necessary to consider both the distribution of materials and the assembly relationships. </p>
+<p><img alt="Prototype of an inventory network" src="../pics/net_ex2.png" /></p>
+<p>Two critical issues that arise for inventory networks are:</p>
+<ul>
+<li>choosing which nodes to place inventory </li>
+<li>how much to set</li>
+</ul>
+<p>The guaranteed service model (GSM) is one of the main approaches to optimizing network inventory policy. 
+We recommend the users to (Graves and Willems 2000), (Eruguz et al. 2016) and (Huang et al. 2022) for more details about the basics of GSM.</p>
+<h2 id="approaches-considered-in-this-library">Approaches considered in this library</h2>
+<p>This library provides several approaches to solve the GSM to optimize network inventory policy.
+Readers can either input a GSM instance or specify several parameters to generate an instance, and then run the different methods to find solutions and compare their performance.</p>
+<p>We design a novel approach, called the <strong>iterative decomposition (ID-SLP) approach</strong>, to efficiently solve the guaranteed service model (GSM) to optimize the inventory policy for large-scale inventory networks.</p>
+<p>This approach decomposes the problem iteratively by analyzing local solutions obtained from a non-convex optimization method (sequential linear programming) and selecting the appropriate algorithm to solve each sub-problem based on its specific network structure.</p>
+<p>This figure shows the framework of our iterative decomposition approach:</p>
+<p><img alt="The framework of the Iterative Decomposition Approach" src="../pics/id.png" /></p>
+<p>It has three main steps: </p>
+<ol>
+<li>Finding local solutions for general structure GSM Instance.</li>
+</ol>
+<p>In this step, we use sequential linear programming (SLP, also called successive linear programming), a local optimization method that iteratively approximates the original non-convex GSM problem with linear sub-problems to find local solutions. The parameter <em>local sol num</em> stands for how many local solutions need to be found.</p>
+<ol>
+<li>Finding stable nodes from local solutions.</li>
+</ol>
+<p>We try to find stable nodes by selecting those nodes whose variable values are consistent across the local solutions. 
+   We use the coefficient of variation (CV, the ratio of the standard deviation to the mean) to assess whether a node is stable. 
+   <em>Stability threshold</em> is a parameter need to be tuned in practice.
+   It determines whether the network can be decomposed. </p>
+<ol>
+<li>Decompose the GSM instance from stable nodes and build sub-instances.</li>
+</ol>
+<p>For more details, please refer to our paper (Huang et al. 2022).</p>
+<p>Other seven approaches of solving GSM are provided in this library: </p>
+<ul>
+<li>
+<p><strong>Dynamic programming (GW-DP)</strong> from (Graves and Willems 2000).
+  This approach was designed for tree networks; it takes advantage of the fact that in any tree, each node can be labeled with a unique index such that every node except one has at most one adjacent node with an index higher than its own.</p>
+</li>
+<li>
+<p><strong>Heuristic general networks algorithm (HGNA)</strong> from (Humair and Willems 2011).
+  This paper combines the GW-DP algorithm with a branch-and-bound scheme and provides an exact solution approach called the <strong>general networks algorithm (GNA)</strong>.
+  GNA can find optimal solutions for general networks, but takes a long time to find the solution for large-scale problems (the authors provide an example 2,025-node problem that takes 577,190.78 seconds to find the optimal solution). The authors also provide two faster heuristics: <strong>HGNA</strong> and <strong>TGNA</strong>. 
+  HGNA is motivated by the structure of the formulation's dual space, whereas TGNA simply terminates the optimization algorithm after a fixed number of iterations.
+  We found that compared with TGNA, HGNA takes a long time to find solutions to large-scale problems but is able to find a lower-cost solution.<br />
+  We add a parameter <em>max iter num</em> to terminate HGNA after a fixed number of iterations, like TGNA. 
+  With larger <em>max iter num</em>, the quality of the solution will be higher, while the solution time will increase.</p>
+</li>
+<li>
+<p><strong>Piecewise linear approximation (PWL)</strong> from (Magnanti et al. 2006).
+  This approach uses piecewise linear functions to approximate the GSM's objective function. This turns the original GSM into a mixed integer programming (MIP) problem that can be solved with an MIP solver. We will terminate the solver and return the results when the gap between the lower and upper objective bounds is less than <em>opt gap</em>, times the absolute value of the incumbent objective value.
+  With smaller <em>opt gap</em>, the quality of the solution will be higher, while the solution time will increase.</p>
+</li>
+<li>
+<p><strong>Dynamic sloping (DS)</strong> and <strong>iterative mixed integer programming (IMIP)</strong> from (Shu and Karimi 2009). 
+  This paper provides two efficient iterative heuristics, DS and IMIP. The DS uses continuous approximation, while the IMIP employs a two-piece linear approximation to approximate the concave objective function. Accordingly, the DS needs to solve a linear problem and the IMIP needs to solve a MIP problem iteratively.  In their numerical studies, the IMIP outperforms the DS in solution quality consistently and the latter outperforms the former in solution speed consistently. A noteworthy feature of these two approaches is that the quality of solutions does not deteriorate with an increase in network size.   </p>
+</li>
+<li>
+<p><strong>Simulated annealing (SA)</strong> from (Grahl et al. 2016).
+  This paper investigates the performance of three meta-heuristics, local search, genetic algorithm, and simulated annealing on solving GSM. SA outperforms the other two meta-heuristics with respect to speed and solution quality. 
+  Therefore we choose SA as a representative of meta-heuristics. </p>
+</li>
+<li>
+<p><strong>Simple sequential linear programming (Simple-SLP)</strong> from (Huang et al. 2022).
+  In the ID approach, if the underlying graph can not be decomposed, we then simply output the local solution with the smallest total inventory cost. 
+  We can also apply this approach directly to solve for GSM without decomposition.
+  We call this approach <strong>Simple-SLP</strong>. The parameter <em>local sol num</em> stands for how many local solutions need to be found. With larger <em>local sol num</em>, more local solutions will be found.
+  Therefore, the possibility of finding a lower-cost solution will also be higher. </p>
+</li>
+</ul>
+<h2 id="data-loading-and-generating">Data loading and  generating</h2>
+<p>A GSM instance <span class="arithmatex">\(i\)</span> contains a graph <span class="arithmatex">\(\mathcal{G}_i = (\mathcal{N}_i, \mathcal{A}_i)\)</span>, all properties of nodes and edges related to GSM, including demand functions, unit holding costs, lead times, and service time requirements for demand nodes.</p>
+<p>The reader can input the number of edges and nodes and the network structure to generate a graph, then generate properties on the generated graph. Or input a graph and then generate properties.</p>
+<p>We highly recommend generating related data at least once to understand how to prepare their own instance for users who want to import their self-data.</p>
+<p>First, we import some functions for data processing:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">utils.edges_loader</span> <span class="kn">import</span> <span class="n">edges_loading_from_willems</span><span class="p">,</span> <span class="n">edges_loading_from_huang</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span> <span class="nn">utils.edges_generator</span> <span class="kn">import</span> <span class="n">edges_generating_by_type</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span> <span class="nn">gsm.generator.gsm_instance_generator</span> <span class="kn">import</span> <span class="n">gsm_instance_generating_given_paras_ranges</span>
+</code></pre></div>
+<p>User can load their own edges or generating edges then building an instance. 
+We provide two exist graph resource for papers. And provide a edges generation function for users.</p>
+<p>We provide function <strong>'edges_loading_from_willems'</strong> to load edges from (Willems 2008).
+This paper provides 38 real supply chains, which all have a general network structure.
+They are also used in Section 4.1 of (Huang et al. 2022).
+The parameter <em>data_id</em> stands for the index of their chains.</p>
+<p>Take chain 10 as an example, we can load the edges with the following codes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">willems_edges</span> <span class="o">=</span> <span class="n">edges_loading_from_willems</span><span class="p">(</span><span class="n">data_id</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">willems_edges</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[(&#39;N006&#39;, &#39;N054&#39;), (&#39;N026&#39;, &#39;N053&#39;), (&#39;N001&#39;, &#39;N055&#39;), (&#39;N012&#39;, &#39;N052&#39;), (&#39;N050&#39;, &#39;N056&#39;)]
+</code></pre></div>
+<p>We provide function <strong>'edges_loading_from_huang'</strong> to load edges presented in Table 4 of (Huang et al. 2022).
+ the parameter <em>avg degree</em> stands for the average degree of those four graphs.</p>
+<p>To load the corresponding edges with average degree equals to 5, we can:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">huang_edges</span> <span class="o">=</span> <span class="n">edges_loading_from_huang</span><span class="p">(</span><span class="n">avg_deg</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+<p>We provide function <strong>'edges_generating_by_type'</strong> to generate graphs with the specified number of nodes, number of edges, and network structure. </p>
+<p>The idea is presented in Section 4.2 of (Huang et al. 2022). 
+To use it, users need to specify the following three parameters:</p>
+<ul>
+<li><em>nodes num</em>: the number of nodes.</li>
+<li><em>edges num</em>: the number of edges (can be empty for serial, assembly, and distribution graph).</li>
+<li><em>graph type</em>: the graph structure, it can be 'serial', 'assembly', 'distribution' and 'general'.</li>
+</ul>
+<p>For example, we can generate a general structure graph with 1000 nodes and 5000 edges: </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">nodes_num</span> <span class="o">=</span> <span class="mi">1000</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">edges_num</span> <span class="o">=</span> <span class="mi">5000</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">graph_type</span> <span class="o">=</span> <span class="s1">&#39;GENERAL&#39;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">random_edges</span> <span class="o">=</span> <span class="n">edges_generating_by_type</span><span class="p">(</span><span class="n">nodes_num</span><span class="o">=</span><span class="n">nodes_num</span><span class="p">,</span> <span class="n">edges_num</span><span class="o">=</span><span class="n">edges_num</span><span class="p">,</span> <span class="n">graph_type</span><span class="o">=</span><span class="n">graph_type</span><span class="p">)</span>
+</code></pre></div>
+<p>We provide function <strong>'gsm_instance_generating_given_paras_ranges'</strong> to generate random properties and build an GSM instance. The idea is presented in Appendix A of (Huang et al. 2022).
+To use it, users need to specify the following parameters:</p>
+<ul>
+<li><em>qty lb</em> and <em>qty ub</em>: the edge proportion range that are set to 1 and 3 as default;</li>
+<li><em>lt lb</em> and <em>lt ub</em>: the lead time range that are set to 1 and 10 as default;</li>
+<li><em>hc lb</em> and <em>hc ub</em>: the holding cost range that are set to 0 and 1 as default;</li>
+<li><em>sla lt lb</em> and <em>sla lt ub</em>: the service time requirement range that are set to 0 and 10 as default;</li>
+<li><em>demand mean lb</em> and <em>demand mean ub</em>: the demand mean range that are set to 50 and 100 as default;</li>
+<li><em>demand std lb</em> and <em>demand std ub</em>: the demand standard deviation range that are set to 1 and 10 as default;</li>
+<li><em>tau</em>: the service level that is set to 0.95 as the default.</li>
+</ul>
+<p>With this function and the default parameters, we can generate three instances for the above three edges: </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">willems_gsm_instance</span> <span class="o">=</span> <span class="n">gsm_instance_generating_given_paras_ranges</span><span class="p">(</span><span class="n">instance_id</span><span class="o">=</span><span class="s1">&#39;INSTANCE_01&#39;</span><span class="p">,</span> <span class="n">edges</span><span class="o">=</span><span class="n">willems_edges</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">huang_gsm_instance</span> <span class="o">=</span> <span class="n">gsm_instance_generating_given_paras_ranges</span><span class="p">(</span><span class="n">instance_id</span><span class="o">=</span><span class="s1">&#39;INSTANCE_02&#39;</span><span class="p">,</span> <span class="n">edges</span><span class="o">=</span><span class="n">huang_edges</span><span class="p">)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">random_gsm_instance</span> <span class="o">=</span> <span class="n">gsm_instance_generating_given_paras_ranges</span><span class="p">(</span><span class="n">instance_id</span><span class="o">=</span><span class="s1">&#39;INSTANCE_03&#39;</span><span class="p">,</span> <span class="n">edges</span><span class="o">=</span><span class="n">random_edges</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="inventory-policy-optimizing">Inventory policy optimizing</h2>
+<p>To optimize the inventory policy on given instance, users first need to create a task, and specify:</p>
+<ul>
+<li><em>task id</em>: the unique index of the task.</li>
+<li><em>gsm_instance</em>: the instance that need to optimized.</li>
+<li><em>approach name</em>: the solving approach. </li>
+</ul>
+<p>As mentioned before, for general structure problems, we provide seven approaches:</p>
+<ul>
+<li>'HGNA'</li>
+<li>'PWL'</li>
+<li>'DS'</li>
+<li>'IMIP'</li>
+<li>'SA'</li>
+<li>'Simple-SLP'</li>
+<li>'ID-SLP'</li>
+</ul>
+<p>The default parameters of these approaches is given in 'solving_default_paras.py'. More details about them can be found in (Huang et al. 2022).</p>
+<p>For example, we can create three tasks from above instances with HGNA, DS and ID-SLP, respectively.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">gsm.gsm_task</span> <span class="kn">import</span> <span class="n">GSMTask</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">willems_task</span> <span class="o">=</span> <span class="n">GSMTask</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;TASK_01&#39;</span><span class="p">,</span> <span class="n">gsm_instance</span><span class="o">=</span><span class="n">willems_gsm_instance</span><span class="p">,</span> <span class="n">approach_name</span><span class="o">=</span><span class="s1">&#39;HGNA&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">huang_task</span> <span class="o">=</span> <span class="n">GSMTask</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;TASK_02&#39;</span><span class="p">,</span> <span class="n">gsm_instance</span><span class="o">=</span><span class="n">huang_gsm_instance</span><span class="p">,</span> <span class="n">approach_name</span><span class="o">=</span><span class="s1">&#39;DS&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">random_task</span> <span class="o">=</span> <span class="n">GSMTask</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;TASK_03&#39;</span><span class="p">,</span> <span class="n">gsm_instance</span><span class="o">=</span><span class="n">huang_gsm_instance</span><span class="p">,</span> <span class="n">approach_name</span><span class="o">=</span><span class="s1">&#39;ID-SLP&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>For the first task loaded, we optimize the inventory policy with HGNA:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">willems_task</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>2023-03-08 20:25:53,277 - /Users/durian/Nutstore Files/Research/InvNet/gsm/gsm_sol.py[line:249] - INFO: HGNA_safety stock cost is 1507.64
+2023-03-08 20:25:53,278 - /Users/durian/Nutstore Files/Research/InvNet/utils/system_utils.py[line:29] - DEBUG: func @get_policy use 1.16721 (s)
+</code></pre></div>
+<p>Except for the HGNA and SA, users can specify the solver for other approaches that involve solving linear or integer programming problems. 
+We provide Gurobi (https://www.gurobi.com/) and COPT (https://www.shanshu.ai/copt) choices with their naive Python interface. We also use pyomo 6.4.2 for unified modeling in our library so that the reader can use any solver supported by pyomo.</p>
+<p>We provide five choices of solver:</p>
+<ul>
+<li><em>GRB</em> uses the Gurobi interface of Python.</li>
+<li><em>COPT</em> uses the COPT interface of Python.</li>
+<li><em>PYO_GRB</em> uses the pyomo to model and solve with Gurobi.</li>
+<li><em>PYO_COPT</em> uses the pyomo to model and solve with COPT.</li>
+<li><em>PYO_CBC</em> uses the pyomo to model and solve with COIN-CBC.</li>
+</ul>
+<p>For more solvers such as Cplex, GLPK and SCIP, users can slightly modify the code of approach to add support.</p>
+<p>Here, for the left two tasks generated from (Huang et al. 2022), we use Gurobi to optimize the policy with DS and ID-SLP approach: </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">huang_task</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;GRB&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">random_task</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;GRB&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>Eruguz AS, Sahin E, Jemai Z, Dallery Y (2016) A comprehensive survey of guaranteed-service models for multi-echelon inventory optimization. International Journal of Production Economics 172:110–125. https://doi.org/10.1016/j.ijpe.2015.11.017</li>
+<li>Grahl, J., Minner, S., Dittmar, D., 2016. Meta-heuristics for placing strategic safety stock in multi-echelon inventory with differentiated service times. Annals of Operations Research 242, 489–504.</li>
+<li>Graves SC, Willems SP (2000) Optimizing strategic safety stock placement in supply chains. M&amp;SOM 2:68–83. https://doi.org/10.1287/msom.2.1.68.23267</li>
+<li>Huang D, Yu J, Yang C (2022) Optimizing Large-scale Inventory Networks: An Iterative Decomposition Approach.</li>
+<li>Humair S, Willems SP (2011) TECHNICAL NOTE—Optimizing Strategic Safety Stock Placement in General Acyclic Networks. Operations Research 59:781–787. https://doi.org/10.1287/opre.1100.0913</li>
+<li>Magnanti TL, Shen Z-JM, Shu J, et al (2006) Inventory placement in acyclic supply chain networks. Operations Research Letters 34:228–238</li>
+<li>Shu J, Karimi IA (2009) Efficient heuristics for inventory placement in acyclic networks. Computers &amp; Operations Research 36:2899–2904. https://doi.org/10.1016/j.cor.2009.01.001</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../inv_graph/inv_graph/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Inventory Graph" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Inventory Graph
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../sim/sim/" class="md-footer__link md-footer__link--next" aria-label="Next: Simulation" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Simulation
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 <a href="https://github.com/durianh96"  target="_blank" rel="noopener">Diyuan Huang</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/durianh96" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="huang.diyuan96@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20 8-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.51198bba.min.js"></script>
+      
+    
+  </body>
+</html>
